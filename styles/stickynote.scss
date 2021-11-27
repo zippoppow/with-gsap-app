@@ -1,0 +1,33 @@
+
+.note{
+  position: relative;
+  width: 200px;
+  min-width: 200px;
+  height: 200px;
+  min-height: 200px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  border: 1px solid tomato;
+
+    .note_canvas{
+        position: relative;
+        width: 200px;
+        min-width: 200px;
+        height: 200px;
+        min-height: 200px;
+
+
+        &:hover{
+          cursor: pointer;
+        }
+
+        &.aqua{
+          background-color: aqua;
+        }
+
+        &.yellow{
+          background-color: yellow;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+
+.notes_panel{
+  position: relative;
+  width: 1200px;
+  min-width: 1200px;
+  height: 100%;
+  min-height: 160px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.notes{
+  position: relative;
+  width: 1200px;
+  min-width: 1200px;
+  height: 800px;
+  min-height: 800px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  border: 1px solid tomato;
+
+}
+
+.notes_canvas {
+  position: relative;
+  width: 1200px;
+  min-width: 1200px;
+  height: 800px;
+  min-height: 800px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;;
+  background-color: #f5f5f5;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
