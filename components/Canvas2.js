@@ -1,7 +1,7 @@
 import React from 'react'
 import useCanvas from './useCanvas'
 
-const Canvas = props => {  
+const Canvas2 = props => {  
   
   const { draw, ...rest } = props;
   const canvasRef = useCanvas(draw);
@@ -55,6 +55,32 @@ const Canvas = props => {
     draw(context);
   }
 
+  const handleDoubleClick = (e) => {
+   // console.log("in handleDoubleClick");
+
+    startX = parseInt(e.nativeEvent.offsetX - canvasRef.current.clientLeft);
+    startY = parseInt(e.nativeEvent.offsetY - canvasRef.current.clientTop);
+    isDown = hitBox(startX, startY);
+
+  //  console.log("in handleDoubleClick, isDown " + isDown);
+  //  console.log("in handleDoubleClick, dragTarget " + JSON.stringify(dragTarget));
+
+    if(isDown){
+      alert("You've double-clicked me. Are you sure you want to delete me?");
+
+      for (let i = 0; i < props.canvasdata.length; i++) {
+
+        if (props.canvasdata[i].Id === dragTarget.Id) {
+          props.canvasdata.splice(i, 1);
+        }
+      }
+
+      const context = canvasRef.current.getContext('2d');
+      draw(context);
+    }
+
+  }
+
 
   const throttle = (callback, delay) => {
     let previousCall = new Date().getTime();
@@ -78,8 +104,9 @@ const Canvas = props => {
         onTouchEnd={handleMouseUp}
         onTouchMove={throttle(handleMouseMove, 10)}
         onTouchCancel={handleMouseUp}
+        onDoubleClick={handleDoubleClick}
 
   />)
 }
 
-export default Canvas;
+export default Canvas2;

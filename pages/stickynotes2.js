@@ -1,15 +1,16 @@
 import React from 'react';
 import { useEffect, useRef, useState} from 'react';
-import Canvas from '../components/Canvas';
+import Canvas from '../components/Canvas2';
 import uuid from 'react-uuid';
 
 import { Notes } from './api/oldnotes';
 
 
-const StickyNotes = () => {
+const StickyNotes2 = () => {
 
     const [canvasData, setCanvaseData] = useState(Notes);
     const [val, setVal] = useState("add text here");
+    const [toolType, setToolType] = useState("drawing");
 
     const addNote = () => {
         let newNote = {"Id": uuid().toString(),
@@ -71,4 +72,4 @@ const StickyNotes = () => {
     )
 }
 
-export default StickyNotes;
+export default StickyNotes2;

@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
     "fabric": "^4.6.0",
     "gsap": "^3.0.1",
     "next": "latest",
@@ -17,6 +19,7 @@
     "react-uuid": "^1.0.2",
     "sass": "1.29.0",
     "socket.io": "^4.4.0",
+    "socket.io-client": "^4.4.0",
     "swr": "^0.1.18"
   }
 }
