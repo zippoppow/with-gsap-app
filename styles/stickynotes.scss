@@ -1,13 +1,67 @@
 
+.notes_section_title{
+  position: relative;
+  width: 1200px;
+  min-width: 1200px;
+  height: 100%;
+  min-height: 60px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
 .notes_panel{
   position: relative;
   width: 1200px;
   min-width: 1200px;
   height: 100%;
-  min-height: 160px;
+  min-height: 60px;
   margin: 10px auto;
   display: flex;
   justify-content: center;
+  border: 1px solid #333;
+  border-radius: 4px;
+
+  textarea{
+    margin: 10px;
+    padding: 10px;
+    color: #0084ff;
+    width: 18rem;
+    min-width: 18rem;
+  }
+
+  select{
+    margin: 10px;
+    padding: 10px;
+    color: #0084ff;
+    background-color: #f5f5f5;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .button{
+    margin: 10px;
+    padding: 10px;
+    color: #0084ff;
+    background-color: #f5f5f5;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &.notes_panel_clear_btn{
+      color: tomato;
+    }
+  }
+
+  .notes_panel_clear_container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+  }
 
 }
 

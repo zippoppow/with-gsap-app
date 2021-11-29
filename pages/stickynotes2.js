@@ -1,75 +1,78 @@
-import React from 'react';
-import { useEffect, useRef, useState} from 'react';
-import Canvas from '../components/Canvas2';
+import { useEffect, useState} from 'react'
+import Title from '../components/Title';
+import Content from '../components/Content';
+import StickyNote from '../components/StickyNote';
 import uuid from 'react-uuid';
+
+import Draggable from 'react-draggable';
+
 
 import { Notes } from './api/oldnotes';
 
-
 const StickyNotes2 = () => {
 
-    const [canvasData, setCanvaseData] = useState(Notes);
-    const [val, setVal] = useState("add text here");
-    const [toolType, setToolType] = useState("drawing");
+  //initialize "data" with Notes data
+  const [data, setData] = useState(Notes);
+  const [val, setVal] = useState("add text here");
 
-    const addNote = () => {
-        let newNote = {"Id": uuid().toString(),
-        "Type": "text",
-        "className": "aqua",
-        "Top": 100,
-        "Left": 100,
-        "x": 100,
-        "y": 100,
-        "w": 160,
-        "h": 160,
-        "TextContent": val.toString()}
+  const addNote = () => {
 
-        let updatedData = [...canvasData, newNote];
-        setCanvaseData(updatedData);
-          //console.log("updatedData: " + JSON.stringify(updatedData));
+    let newNote = {"Id": uuid().toString(),
+    "Type": "text",
+    "className": "aqua",
+    "Top": 0,
+    "Left": 0,
+    "PosX": 0,
+    "PosY": 0,
+    "TextContent": val.toString()}
 
-    };
-  
-    // draw rectangle
-    const draw = (ctx) => {
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-            canvasData.map ((info) => {
-                const style = {backgroundColor: '#ffa500', border: '1px solid tomato'};
-                drawFillRect(info, style, ctx);
-            });
-        }
 
-    const drawFillRect = (info, style, ctx) => {
-        const { x, y, w, h } = info;
-        // const { backgroundColor = 'black' } = style;
+    let updatedData = [...data, newNote];
 
-        ctx.beginPath();
-        ctx.fillStyle = style.backgroundColor;
-        ctx.fillRect(x, y, w, h);
-        ctx.font = '18px Times New Roman';
-        ctx.strokeText(info.TextContent, x+10, y+20, w);
+    setData(updatedData);
 
-    }
-
-    const clearCanvas = () =>{
-        setCanvaseData([]);
-    }
-
+    console.log("updatedData: " + JSON.stringify(updatedData));
  
-    return ( 
-        <div className="App">
-            <div className="notes_panel">
-                <textarea
-                    onChange={(e) => setVal(e.target.value)}
-                    value={val}
-                />
-                <button className='button' onClick={() => {addNote()}}>Add Note</button>
-                <button className='button' onClick={() => {clearCanvas()}}>Clear All Notes</button>
-            </div>
-                <Canvas draw={draw} canvasdata={canvasData} className="notes_canvas" width="1200" height="800" />
-          </div>
-    
-    )
+  };
+
+  const removeNote = (id) => {
+
+    setData(data.filter((i)=>(i.Id !== id)))
+  }
+
+
+  return (
+    <div className="inner">
+      <Title lineContent="With-GSAP" lineContent2="Using NEXT" />
+      <div>
+        <div className="other">
+           <Content />
+           <div>
+              <textarea
+                onChange={(e) => setVal(e.target.value)}
+                value={val}
+              />
+              <button className='button' onClick={() => {addNote()}}>Add Note</button>
+           </div>
+            { data.map (function(note) {
+              return (
+                <Draggable>
+                  <div className="drag-wrapper note" id={note.Id} key={note.Id} >
+                    <div className="stickyNote_container" draggable="true" key={note.Id} >
+                      <button className='button' onClick={() => {removeNote(note.Id)}}>X</button>
+                      <StickyNote key={note.Id} noteData={note} />
+                    </div>
+                  </div>
+                </Draggable>
+              )
+            })}
+           
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default StickyNotes2;
+
+

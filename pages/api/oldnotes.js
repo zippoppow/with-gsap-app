@@ -3,7 +3,7 @@ export const Notes =
         {
             "Id": "cc3606b5-71b3-4b5f-a464-5bc91c632322",
             "Type": "text",
-            "className": "aqua",
+            "backgroundColor": "#ffff66",
             "Top": 0,
             "Left": 0,
             "x": 100,
@@ -15,7 +15,7 @@ export const Notes =
         {
             "Id": "9c9e09f6-eb1e-4929-8f9e-4c945f9c485b",
             "Type": "text",
-            "className": "yellow",
+            "backgroundColor": "#ffdc00",
             "Top": 0,
             "Left": 210,
             "x": 200,
